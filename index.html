@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Alter</title>
+    <meta name="description" content="Alter: Dispatches and essays on education, society, and culture. A sanctuary for focused editorial reading." />
+    <meta property="og:title" content="Alter" />
+    <meta property="og:description" content="Alter: Dispatches and essays on education, society, and culture. A sanctuary for focused editorial reading." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#242424" />
+
+    <!-- Favicons & App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script>
+      // Guard against extension scripts attempting to overwrite window.fetch in environments where it only has a getter
+      (function() {
+        try {
+          var _rawFetch = window.fetch;
+          var _customFetch = _rawFetch;
+
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return _customFetch || _rawFetch;
+            },
+            set: function(val) {
+              _customFetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          try {
+            var proto = Object.getPrototypeOf(window);
+            if (proto) {
+              var pFetch = proto.fetch || window.fetch;
+              Object.defineProperty(proto, 'fetch', {
+                get: function() {
+                  return proto.__fetchOverride || pFetch;
+                },
+                set: function(val) {
+                  proto.__fetchOverride = val;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (err) {}
+        }
+
+        // Suppress unhandled errors originating from injected chrome-extension scripts
+        window.addEventListener('error', function(event) {
+          if (event && event.filename && event.filename.indexOf('chrome-extension://') !== -1) {
+            event.preventDefault();
+            return true;
+          }
+        });
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

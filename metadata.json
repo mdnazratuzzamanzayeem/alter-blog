@@ -1,0 +1,8 @@
+{
+  "name": "Alter",
+  "description": "Alter: Dispatches and essays on education, society, and culture. A sanctuary for focused editorial reading.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
